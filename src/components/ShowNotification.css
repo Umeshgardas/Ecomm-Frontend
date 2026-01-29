@@ -1,0 +1,165 @@
+.show-notification {
+  position: fixed;
+  z-index: 99999;
+  min-width: 300px;
+  max-width: 500px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  animation: slideIn 0.3s ease;
+}
+
+/* Position styles */
+.notification-top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.notification-top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.notification-bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+
+.notification-bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.notification-top-center {
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.notification-bottom-center {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Content styles */
+.notification-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.notification-icon {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.notification-message {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Close button */
+.notification-close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.notification-close-btn:hover {
+  opacity: 1;
+}
+
+/* Progress bar */
+.notification-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  border-radius: 0 0 8px 8px;
+  animation: notificationProgress linear forwards;
+  transform-origin: left;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notification-enter {
+  animation: slideIn 0.3s ease;
+}
+
+.notification-exit {
+  animation: slideOut 0.3s ease forwards;
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes notificationProgress {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .show-notification {
+    min-width: 280px;
+    max-width: calc(100% - 40px);
+    margin: 0 20px;
+    left: 0;
+    right: 0;
+    transform: none !important;
+  }
+  
+  .notification-top-right,
+  .notification-top-left,
+  .notification-top-center {
+    top: 10px;
+  }
+  
+  .notification-bottom-right,
+  .notification-bottom-left,
+  .notification-bottom-center {
+    bottom: 10px;
+  }
+}

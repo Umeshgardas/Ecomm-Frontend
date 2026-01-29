@@ -1,0 +1,177 @@
+.notfound-container {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.notfound-content {
+  text-align: center;
+  max-width: 600px;
+}
+
+.notfound-code {
+  font-size: 120px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.notfound-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #000;
+}
+
+.notfound-description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.notfound-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 36px;
+  }
+
+  .profile-header-info h1 {
+    font-size: 24px;
+  }
+
+  .quick-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .order-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .order-status {
+    align-self: flex-start;
+  }
+
+  .order-item {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .order-footer {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .notfound-code {
+    font-size: 80px;
+  }
+
+  .notfound-title {
+    font-size: 28px;
+  }
+
+  .notfound-actions {
+    flex-direction: column;
+  }
+
+  .notfound-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-section {
+    padding: 20px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .profile-section,
+  .order-card {
+    background: #242424;
+    border-color: #333;
+  }
+
+  .section-header h2,
+  .info-value,
+  .order-info h3,
+  .order-item span:first-child,
+  .total-amount,
+  .empty-orders h2,
+  .notfound-title {
+    color: #fff;
+  }
+
+  .info-label,
+  .order-info p,
+  .order-item,
+  .order-total,
+  .empty-orders p,
+  .notfound-description {
+    color: #b0b0b0;
+  }
+
+  .action-card {
+    background: #1a1a1a;
+  }
+
+  .action-card:hover {
+    background: #2a2a2a;
+    border-color: #fff;
+  }
+
+  .action-card h3 {
+    color: #fff;
+  }
+
+  .action-card p {
+    color: #b0b0b0;
+  }
+
+  .info-row,
+  .order-header,
+  .order-footer {
+    border-bottom-color: #333;
+  }
+
+  .order-status {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .notfound-container {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  }
+}

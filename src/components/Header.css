@@ -1,0 +1,811 @@
+/* Header.css - Standardized & Theme-Compatible */
+
+/* ==================== MAIN HEADER ==================== */
+.main-header {
+  position: sticky;
+  top: 0;
+  background: var(--header-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.main-header.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ==================== LOGO ==================== */
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: transform 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.logo:hover {
+  transform: scale(1.02);
+  color: var(--color-primary);
+}
+
+/* ==================== DESKTOP NAVIGATION ==================== */
+.desktop-nav {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.desktop-nav a {
+  text-decoration: none;
+  color: var(--color-text-light);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 5px 0;
+  position: relative;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.desktop-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.desktop-nav a:hover::after,
+.desktop-nav a.active::after {
+  width: 100%;
+}
+
+.desktop-nav a.active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.desktop-nav a:hover {
+  color: var(--color-primary);
+}
+
+.desktop-nav a.admin-link {
+  color: var(--color-info);
+}
+
+.desktop-nav a.admin-link::after {
+  background: var(--color-info);
+}
+
+/* ==================== HEADER ACTIONS ==================== */
+.header-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ==================== ICON BUTTONS ==================== */
+.icon-button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-decoration: none;
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+
+.icon-button:hover {
+  background: var(--color-bg-light);
+  transform: translateY(-2px);
+}
+
+.icon-button:active {
+  transform: translateY(0);
+}
+
+/* Cart Badge */
+.cart-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-radius: 50%;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==================== AUTH BUTTONS ==================== */
+.auth-button {
+  padding: 10px 20px;
+
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.auth-button:hover {
+  border-color: var(--color-primary);
+  background: var(--color-bg-light);
+}
+
+.auth-button.active {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border-color: var(--btn-primary-bg);
+}
+
+/* ==================== USER MENU DROPDOWN ==================== */
+.user-menu {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  box-shadow: var(--shadow-lg);
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.user-menu:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu a,
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 400;
+  transition: background 0.2s ease;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
+  background: var(--color-bg-light);
+}
+
+.dropdown-menu hr {
+  margin: 5px 0;
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+
+.dropdown-theme-toggle {
+  padding: 8px 12px;
+}
+
+.dropdown-theme-toggle .theme-toggle-btn {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.logout-btn {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.logout-btn:hover {
+  background: var(--color-error-bg);
+}
+
+/* ==================== DESKTOP THEME TOGGLE ==================== */
+.desktop-theme-toggle {
+  display: flex;
+  align-items: center;
+}
+
+/* ==================== MOBILE MENU TOGGLE ==================== */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  transition: transform 0.2s ease;
+  color: var(--color-text);
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+.mobile-menu-toggle:active {
+  transform: scale(0.95);
+}
+
+/* ==================== MOBILE NAVIGATION ==================== */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  max-width: 85vw;
+  height: 100vh;
+  background: var(--card-bg);
+  box-shadow: var(--shadow-xl);
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1002;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: none;
+}
+
+.mobile-nav.open {
+  right: 0;
+}
+
+.mobile-nav-content {
+  padding: 80px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 100vh;
+}
+
+.mobile-nav a,
+.mobile-logout-btn {
+  padding: 16px 0;
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 1px solid var(--color-border);
+  transition:
+    color 0.2s ease,
+    padding-left 0.2s ease;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-border);
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-nav a:hover,
+.mobile-logout-btn:hover {
+  color: var(--color-primary);
+  padding-left: 10px;
+}
+
+.mobile-nav a:active,
+.mobile-logout-btn:active {
+  opacity: 0.7;
+}
+
+.mobile-nav a.active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.mobile-nav hr {
+  margin: 10px 0;
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Mobile Theme Toggle */
+.mobile-theme-toggle {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border);
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-theme-toggle .theme-toggle-btn {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.mobile-logout-btn {
+  color: var(--color-accent);
+  margin-top: 10px;
+}
+
+/* Mobile Menu Close Button */
+.mobile-nav-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--color-text);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.mobile-nav-close:hover {
+  background: var(--color-bg-light);
+  transform: rotate(90deg);
+}
+
+.mobile-nav-close:active {
+  transform: rotate(90deg) scale(0.9);
+}
+
+/* ==================== MOBILE MENU BACKDROP ==================== */
+.mobile-menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-bg);
+  z-index: 1001;
+  animation: fadeIn 0.3s ease;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.mobile-menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+/* Large Desktop - 1200px */
+@media (max-width: 1200px) {
+  .desktop-nav {
+    gap: 25px;
+  }
+
+  .desktop-nav a {
+    font-size: 13px;
+  }
+}
+
+/* Tablet Landscape - 1024px */
+@media (max-width: 1024px) {
+  .desktop-nav {
+    gap: 20px;
+  }
+
+  .desktop-nav a {
+    font-size: 12px;
+  }
+
+  .header-container {
+    gap: 15px;
+  }
+
+  .header-actions {
+    gap: 12px;
+  }
+}
+
+/* Tablet Portrait - 900px */
+@media (max-width: 900px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .desktop-theme-toggle {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .mobile-nav {
+    display: block;
+  }
+}
+
+/* Mobile Large - 768px */
+@media (max-width: 768px) {
+  .auth-button {
+    display: none;
+  }
+
+  .header-container {
+    padding: 15px 20px;
+  }
+
+  .logo {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  .icon-button {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .mobile-menu-toggle {
+    width: 44px;
+    height: 44px;
+    font-size: 26px;
+  }
+
+  .cart-badge {
+    top: 4px;
+    right: 4px;
+    min-width: 20px;
+    height: 20px;
+    font-size: 11px;
+  }
+}
+
+/* Mobile Portrait - 480px */
+@media (max-width: 480px) {
+  .mobile-nav {
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  .logo {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
+
+  .header-container {
+    padding: 12px 15px;
+    gap: 10px;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .icon-button {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .mobile-menu-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+
+  .mobile-nav-content {
+    padding: 70px 20px 30px;
+  }
+
+  .mobile-nav a,
+  .mobile-logout-btn,
+  .mobile-theme-toggle {
+    font-size: 15px;
+  }
+
+  .search-button {
+    display: none;
+  }
+}
+
+/* Mobile Small - 360px */
+@media (max-width: 360px) {
+  .logo {
+    font-size: 16px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .header-container {
+    padding: 10px 12px;
+  }
+
+  .header-actions {
+    gap: 4px;
+  }
+
+  .icon-button {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  .mobile-menu-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 22px;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .mobile-nav-content {
+    padding-top: 60px;
+  }
+
+  .mobile-nav a,
+  .mobile-logout-btn,
+  .mobile-theme-toggle {
+    padding: 12px 0;
+    min-height: 40px;
+    font-size: 14px;
+  }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .cart-badge {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .main-header,
+  .desktop-nav a,
+  .desktop-nav a::after,
+  .icon-button,
+  .mobile-nav,
+  .mobile-menu-backdrop,
+  .mobile-nav-close {
+    transition: none;
+    animation: none;
+  }
+}
+/* Add these styles to your existing Header.css */
+
+/* Search Modal */
+.search-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 9998;
+  animation: fadeIn 0.3s ease;
+}
+
+.search-modal {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 700px;
+  background: var(--bg-primary, #ffffff);
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  animation: slideDown 0.3s ease;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translate(-50%, -100%);
+  }
+  to {
+    transform: translate(-50%, 0);
+  }
+}
+
+.search-modal-header {
+  position: relative;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.search-modal-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--text-secondary, #666);
+  transition: color 0.2s ease;
+  padding: 4px;
+  line-height: 1;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search-modal-close:hover {
+  color: var(--text-primary, #1a1a1a);
+}
+
+.search-modal-content {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Mobile Search Button in Nav */
+.mobile-search-button {
+  width: 100%;
+  padding: 14px 20px;
+  background: var(--primary-color, #2563eb);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.mobile-search-button:hover {
+  background: var(--primary-hover, #1e40af);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* Search button styles */
+.search-button {
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+.search-button:hover {
+  transform: scale(1.1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .search-modal {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .search-modal-content {
+    padding: 16px;
+  }
+
+  .search-modal-close {
+    font-size: 24px;
+    right: 12px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .search-modal {
+    background: var(--bg-primary, #1a1a1a);
+  }
+
+  .search-modal-backdrop {
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* Tablet Responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .search-modal {
+    width: 85%;
+    max-width: 650px;
+  }
+}
