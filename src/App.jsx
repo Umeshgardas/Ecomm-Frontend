@@ -1,29 +1,30 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useContext, Suspense, lazy } from "react";
 import { AuthContext } from "./contexts/AuthContext";
-import { SearchProvider } from "./contexts/SearchContext"; // NEW - Import SearchProvider
+import { SearchProvider } from "./contexts/SearchContext";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import AdminRoute from "./components/AdminRoute.jsx";
-import "./App.css";
 
-// Lazy load pages for better performance
+// Import critical pages directly (not lazy loaded)
+import Home from "./pages/Home.jsx";
+import Checkout from "./pages/Checkout";
+import OrderSuccess from "./pages/OrderSuccess";
+
+// Lazy load non-critical pages
 const Auth = lazy(() => import("./components/Auth.jsx"));
-const Home = lazy(() => import("./pages/Home.jsx"));
 const Login = lazy(() => import("./pages/Login.jsx"));
 const Register = lazy(() => import("./pages/Register.jsx"));
 const Cart = lazy(() => import("./pages/Cart.jsx"));
 const Favorites = lazy(() => import("./pages/Favorites.jsx"));
 const Profile = lazy(() => import("./pages/Profile.jsx"));
 const Dashboard = lazy(() => import("./pages/admin/Dashboard.jsx"));
-import Checkout from "./pages/Checkout";
-import OrderSuccess from "./pages/OrderSuccess";
 
-// NEW - Search Results Page
-const SearchResults = lazy(() => import("./pages/Searchresults.jsx"));
+// Search Results Page
+const SearchResults = lazy(() => import("./pages/SearchResults.jsx"));
 
-// ADD THESE ADMIN PAGES
+// Admin pages
 const ProductList = lazy(() => import("./pages/admin/ProductList.jsx"));
 const CreateProduct = lazy(() => import("./pages/admin/CreateProduct.jsx"));
 const EditProduct = lazy(() => import("./pages/admin/EditProduct.jsx"));
@@ -60,11 +61,20 @@ const ProductDetail = lazy(() => import("./pages/ProductDetail.jsx"));
 // 404 Not Found page
 const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 
-// Loading component
+// Loading component with inline styles to ensure it displays properly
 const LoadingSpinner = () => (
-  <div className="loading-container">
+  <div
+    style={{
+      minHeight: "60vh",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: "1rem",
+    }}
+  >
     <div className="loading-spinner"></div>
-    <p>Loading...</p>
+    <p style={{ color: "#666", fontSize: "14px" }}>Loading...</p>
   </div>
 );
 
@@ -72,7 +82,7 @@ function App() {
   const { user } = useContext(AuthContext);
 
   return (
-    <SearchProvider> {/* NEW - Wrap with SearchProvider */}
+    <SearchProvider>
       <div className="app-container">
         <Header />
 
@@ -82,7 +92,7 @@ function App() {
               {/* Home */}
               <Route path="/" element={<Home />} />
 
-              {/* NEW - Search Route */}
+              {/* Search Route */}
               <Route path="/search" element={<SearchResults />} />
 
               {/* Authentication Routes */}
@@ -133,7 +143,7 @@ function App() {
                 <Route path="/order-success" element={<OrderSuccess />} />
               </Route>
 
-              {/* Admin Routes - UPDATED */}
+              {/* Admin Routes */}
               <Route element={<AdminRoute />}>
                 <Route path="/admin" element={<Dashboard />} />
                 <Route path="/admin/products" element={<ProductList />} />

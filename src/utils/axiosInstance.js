@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/api", // Make sure this matches your backend PORT
+  baseURL: "https://ecomm-backend-xydc.onrender.com/api", // Make sure this matches your backend PORT
   headers: {
     "Content-Type": "application/json",
   },
