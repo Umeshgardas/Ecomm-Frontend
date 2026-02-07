@@ -1,7 +1,7 @@
 import { createContext, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SearchContext = createContext();
+const SearchContext = createContext(null);
 
 export const useSearch = () => {
   const context = useContext(SearchContext);
@@ -16,10 +16,12 @@ export const SearchProvider = ({ children }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [searchActive, setSearchActive] = useState(false);
+
   const navigate = useNavigate();
 
   const performSearch = useCallback(async (query) => {
-    if (!query || query.trim().length === 0) {
+    const trimmed = query?.trim();
+    if (!trimmed) {
       setSearchResults([]);
       setSearchActive(false);
       return;
@@ -29,19 +31,15 @@ export const SearchProvider = ({ children }) => {
     setSearchActive(true);
 
     try {
-      // Search API endpoint
       const response = await fetch(
-        `/api/products/search?q=${encodeURIComponent(query.trim())}`,
+        `/api/products/search?q=${encodeURIComponent(trimmed)}`
       );
-
-      if (!response.ok) {
-        throw new Error("Search failed");
-      }
+      if (!response.ok) throw new Error("Search failed");
 
       const data = await response.json();
-      setSearchResults(data.products || data || []);
-    } catch (error) {
-      console.error("Search error:", error);
+      setSearchResults(data.products ?? data ?? []);
+    } catch (err) {
+      console.error(err);
       setSearchResults([]);
     } finally {
       setIsSearching(false);
@@ -53,7 +51,7 @@ export const SearchProvider = ({ children }) => {
       setSearchQuery(query);
       performSearch(query);
     },
-    [performSearch],
+    [performSearch]
   );
 
   const clearSearch = useCallback(() => {
@@ -67,22 +65,24 @@ export const SearchProvider = ({ children }) => {
       navigate(`/products/${productId}`);
       clearSearch();
     },
-    [navigate, clearSearch],
+    [navigate, clearSearch]
   );
 
-  const value = {
-    searchQuery,
-    searchResults,
-    isSearching,
-    searchActive,
-    handleSearch,
-    clearSearch,
-    navigateToProduct,
-    setSearchActive,
-  };
-
   return (
-    <SearchContext.Provider value={value}>{children}</SearchContext.Provider>
+    <SearchContext.Provider
+      value={{
+        searchQuery,
+        searchResults,
+        isSearching,
+        searchActive,
+        handleSearch,
+        clearSearch,
+        navigateToProduct,
+        setSearchActive,
+      }}
+    >
+      {children}
+    </SearchContext.Provider>
   );
 };
 
