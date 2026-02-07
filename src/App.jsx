@@ -7,12 +7,12 @@ import Footer from "./components/Footer.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import AdminRoute from "./components/AdminRoute.jsx";
 
-// Import critical pages directly
+// Critical pages (direct import)
 import Home from "./pages/Home.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import OrderSuccess from "./pages/OrderSuccess.jsx";
 
-// Lazy load pages
+// Lazy-loaded pages
 const Auth = lazy(() => import("./components/Auth.jsx"));
 const Cart = lazy(() => import("./pages/Cart.jsx"));
 const Favorites = lazy(() => import("./pages/Favorites.jsx"));
@@ -28,7 +28,7 @@ const ProductList = lazy(() => import("./pages/admin/ProductList.jsx"));
 const CreateProduct = lazy(() => import("./pages/admin/CreateProduct.jsx"));
 const EditProduct = lazy(() => import("./pages/admin/EditProduct.jsx"));
 
-// Collections
+// Collection pages
 const AllShirts = lazy(() => import("./pages/collections/AllShirts.jsx"));
 const LinenShirts = lazy(() => import("./pages/collections/LinenShirts.jsx"));
 const OxfordCottonShirts = lazy(
@@ -53,7 +53,7 @@ const Sustainability = lazy(
   () => import("./pages/info/Sustainability.jsx")
 );
 
-// Loading UI
+// Loading fallback
 const LoadingSpinner = () => (
   <div
     style={{

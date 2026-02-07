@@ -39,7 +39,7 @@ export const SearchProvider = ({ children }) => {
       const data = await response.json();
       setSearchResults(data.products ?? data ?? []);
     } catch (err) {
-      console.error(err);
+      console.error("Search error:", err);
       setSearchResults([]);
     } finally {
       setIsSearching(false);
