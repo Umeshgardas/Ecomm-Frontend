@@ -2,10 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
+
 import { ThemeProvider } from "./contexts/ThemeContext.jsx";
+import { SearchProvider } from "./contexts/SearchContext.jsx";
 import AuthProvider from "./contexts/AuthContext.jsx";
-import "./global.css"; // This will import theme.css automatically
 import { NotificationProvider } from "./contexts/NotificationContext.jsx";
+
+import "./global.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -13,10 +16,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <BrowserRouter>
         <ThemeProvider>
           <AuthProvider>
-            <App />
+            <SearchProvider>
+              <App />
+            </SearchProvider>
           </AuthProvider>
         </ThemeProvider>
       </BrowserRouter>
     </NotificationProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

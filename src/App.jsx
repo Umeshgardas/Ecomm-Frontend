@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useContext, Suspense, lazy } from "react";
 import { AuthContext } from "./contexts/AuthContext";
-import { SearchProvider } from "./contexts/SearchContext";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
